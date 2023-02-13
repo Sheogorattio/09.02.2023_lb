@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -119,6 +120,49 @@ namespace CardClass
                     Environment.Exit(5);
                 }
             }
+        }
+
+        public double Money { set;  get; }
+        public static double operator+(Card card, double money)
+        {
+            card.Money += money;
+            return card.Money;
+        }
+
+        public static double operator+(double money, Card card)
+        {
+            return card.Money + money;
+        }
+
+        public static double operator -(Card card, double money)
+        {
+            card.Money -= money;
+            return card.Money;
+        }
+
+        public static double operator -(double money, Card card)
+        {
+            return card.Money - money;
+        }
+
+        public static bool operator ==(Card card1, Card card2)
+        {
+            return card1.cvc == card2.cvc;
+        }
+
+        public static bool operator !=(Card card1, Card card2)
+        {
+            return !(card1.cvc == card2.cvc);
+        }
+
+        public static bool operator >(Card card1, Card card2)
+        {
+            return card1.Money > card2.Money;
+        }
+
+        public static bool operator <(Card card1, Card card2)
+        {
+            return card1.Money < card2.Money;
         }
     }
 }

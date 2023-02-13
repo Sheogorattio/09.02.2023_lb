@@ -12,8 +12,12 @@ namespace _09._02._2023_lb
         static void Main(string[] args)
         {
             Card obj = new Card();
+            Card obj2 = new Card();
+            obj2.CVC = 120.ToString();
             
             obj.CVC = 120.ToString();
+
+            Console.WriteLine(obj.CVC == obj2.CVC);
 
             obj.Number =1234567890123456.ToString();
 
